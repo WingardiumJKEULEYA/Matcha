@@ -1,10 +1,14 @@
 <% include layouts/header %>
 <div class="row">
     <div class="thumbnail" style="margin-left: 40%;margin-right: 40%;">
-      <img src="<%= user.picture ? "http://127.0.0.1:8080/uploads/" + user.picture : "http://127.0.0.1:8080/uploads/default_image.png" %>" style="max-height:200px;max-width:200px;">
+      <img src="<%= user.picture ? "http://127.0.0.1:3000/uploads/" + user.picture : "http://127.0.0.1:3000/uploads/default_image.png" %>" style="max-height:200px;max-width:200px;">
       <center><%= user.username %></center>
       <center>
-        <div id="match_user" class="btn btn-success navbar-btn"><span class="glyphicon glyphicon-fire"></span> Match user !</div><br>
+        <% if (matched) { %>
+          <div id="match_user" class="btn btn-danger navbar-btn"><span class="glyphicon glyphicon-fire"></span> Unmatch user !</div><br>
+        <% } else { %>
+          <div id="match_user" class="btn btn-success navbar-btn"><span class="glyphicon glyphicon-fire"></span> Match user !</div><br>
+        <% } %>
         Score: <%= user.score %>
       </center>
     </div>

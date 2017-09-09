@@ -35,6 +35,12 @@ var mailsender  = require('./mail.js');
       return ;
     }
 
+    if (pwd.length < 6) {
+      console.log("pwd too short");
+      res.render('signup', {title: "Signup", error: "Password too shors (6 chars minimum) !", connected: req.session.user !== undefined});
+      return ;
+    }
+
     pool.getConnection(function(err, connection) {
       if (err) {
         console.log("error connexion pool signup");
@@ -97,7 +103,7 @@ var mailsender  = require('./mail.js');
 
     pool.getConnection(function(err, connection) {
       if (err) {
-        console.log("erreur connexion pool signin");
+        console.log("erreur connexion pool signin " + err);
         res.sendStatus(500); return ;
       }
 

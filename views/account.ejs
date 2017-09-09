@@ -4,7 +4,7 @@
 
 <div class="row">
     <a href="/profile/<%= user.id %>" class="thumbnail" style="margin-left: 40%;margin-right: 40%;">
-      <img src="<%= user.picture ? "http://127.0.0.1:8080/uploads/" + user.picture : "http://127.0.0.1:8080/uploads/default_image.png" %>" style="max-height:200px;max-width:200px;">
+      <img src="<%= user.picture ? "http://127.0.0.1:3000/uploads/" + user.picture : "http://127.0.0.1:3000/uploads/default_image.png" %>" style="max-height:200px;max-width:200px;">
       <center><%= user.username %></center>
       <center>Score: <%= user.score %></center>
     </a>
@@ -36,7 +36,7 @@
       </a>
       <div class="list-group-item"><b>Location:</b><br />
         <input type="text" class="form-control" id="location" name="location" value="<%= (user.location) == undefined ? "48.896574,2.318558" : user.location %>" required=true disabled="true" style="width: 69%; display: inline;">
-        <a href="http://127.0.0.1:8080/map" class="btn btn-info" value="Input Button"><span class="glyphicon glyphicon-fullscreen"></span> Choose a location</a>
+        <a href="http://127.0.0.1:3000/map" class="btn btn-info" value="Input Button"><span class="glyphicon glyphicon-fullscreen"></span> Choose a location</a>
       </div>
       <a class="list-group-item"><b>Orientation:</b><br />
         <select name="orientation" class="form-control" id="orientation">
@@ -91,7 +91,7 @@
     <% for (var i = 0; i < images.length; i++) { %>
       <div class="col-sm-6 col-md-2">
         <div class="thumbnail">
-          <img width="150" height="190" src="http://127.0.0.1:8080/uploads/<%= images[i].img %>"><br>
+          <img src="http://127.0.0.1:3000/uploads/<%= images[i].img %>" style="width: 140px;height:150px;"><br>
           <center>
             <p>
               <a onclick='image_first("<%= images[i].img %>");' class="btn btn-primary" role="button" name="<%= images[i].img %>" id="first_image">First</a> 

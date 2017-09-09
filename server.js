@@ -108,6 +108,6 @@ require('./controllers/events')(users);
 // WORKERS CRON
 require('./controllers/workers');
 
-server.listen(8080);
+server.listen(3000);
 
 module.exports = events;

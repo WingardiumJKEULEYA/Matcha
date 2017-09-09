@@ -104,13 +104,19 @@ router.post('/', function( req, res ) {
                   delete users[users.indexOf(user)];
                 callback();
               })
-            } else {
-              connection.query("SELECT * FROM blocked_users WHERE user = ? AND blocked_target = ?", [ requester.id, user.id ], function (err, rows) {
-                if (rows.length > 0) {
-                  delete users[users.indexOf(user)];
-                } 
-                callback();
-              });
+            }
+            connection.query("SELECT * FROM blocked_users WHERE user = ? AND blocked_target = ?", [ requester.id, user.id ], function (err, rows) {
+              if (rows.length > 0) {
+                delete users[users.indexOf(user)];
+              }
+            });
+            connection.query("SELECT * FROM blocked_users WHERE user = ? AND blocked_target = ?", [ user.id, requester.id ], function (err, rows) {
+              if (rows.length > 0) {
+                delete users[users.indexOf(user)];
+              }
+            });
+            if (user.id == requester.id ) {
+              delete users[users.indexOf(user)];
             }
           }, function ( err ) {
             var returned_users = [];

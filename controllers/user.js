@@ -23,10 +23,18 @@ router.post('/block', function( req, res ) {
     connection.query("SELECT * FROM blocked_users WHERE user = ? AND blocked_target = ?", [ req.session.user, id ], function (err, rows) {
       if (rows.length == 0) {
         connection.query("INSERT INTO blocked_users (user, blocked_target) VALUES (?, ?)",  [req.session.user, id], function( err, rows) {
+          if ( err ){
+            res.sendStatus( 500 );
+          }
+        });
+
+        connection.query("DELETE FROM matchs WHERE user = ? AND match_target = ?",  [req.session.user, id], function( err, rows) {
           if ( err )
             res.sendStatus( 500 );
-          else
+          else {
             res.sendStatus( 201 );
+            events.emit('user_unmatch', req.session.user, id);
+          }
         });
       }
       else {

@@ -273,7 +273,7 @@ $(document).ready(function(){
           data[i].picture = "default_image.png";
         }
 
-        $('<div class="col-sm-6 col-md-4"><div class="thumbnail"><img src="http://127.0.0.1:8080/uploads/' + data[i].picture +'"><center><div class="caption"><h3 style="margin:0px;"">' + escape(data[i].firstname) + ' ' + escape(data[i].lastname) +'</h3><p>'+ escape(data[i].bio) + '</p><p><a href="/profile/' + data[i].id + '" class="btn btn-primary" role="button">Visit</a></p></div></div></center></div></div>').appendTo("#collection_suggest");
+        $('<div class="col-sm-6 col-md-4"><div class="thumbnail"><img src="http://127.0.0.1:3000/uploads/' + data[i].picture +'"><center><div class="caption"><h3 style="margin:0px;"">' + escape(data[i].firstname) + ' ' + escape(data[i].lastname) +'</h3><p>'+ escape(data[i].bio) + '</p><p><a href="/profile/' + data[i].id + '" class="btn btn-primary" role="button">Visit</a></p></div></div></center></div></div>').appendTo("#collection_suggest");
       }
     }).fail(function( error ) {
       $('#collection_suggest').hide();
@@ -326,7 +326,7 @@ $(document).ready(function(){
         if (data[i].picture == undefined || data[i].picture.length == 0) {
           data[i].picture = "default_image.png";
         }  
-        $('<div class="col-sm-6 col-md-4"><div class="thumbnail"><img src="http://127.0.0.1:8080/uploads/' + data[i].picture +'"><center><div class="caption"><h3 style="margin:0px;"">' + escape(data[i].firstname) + ' ' + escape(data[i].lastname) +'</h3><p>'+ escape(data[i].bio) + '</p><p><a href="/profile/' + data[i].id + '" class="btn btn-primary" role="button">Visit</a></p></div></div></center></div></div>').appendTo("#collection_search");
+        $('<div class="col-sm-6 col-md-4"><div class="thumbnail"><img src="http://127.0.0.1:3000/uploads/' + data[i].picture +'"><center><div class="caption"><h3 style="margin:0px;"">' + escape(data[i].firstname) + ' ' + escape(data[i].lastname) +'</h3><p>'+ escape(data[i].bio) + '</p><p><a href="/profile/' + data[i].id + '" class="btn btn-primary" role="button">Visit</a></p></div></div></center></div></div>').appendTo("#collection_search");
       }
     }).fail(function( error ) {
       $('#collection_search').hide();
